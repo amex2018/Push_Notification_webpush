@@ -11,11 +11,11 @@ app.use(express.static(path.join(__dirname, "client")));
 app.use(bodyParser.json());
 
 const publicVapidKey =
-  "BJthRQ5myDgc7OSXzPCMftGw-n16F7zQBEN7EUD6XxcfTTvrLGWSIG7y_JxiWtVlCFua0S8MTB5rPziBqNx1qIo";
-const privateVapidKey = "3KzvKasA2SoCxsp0iIG_o9B0Ozvl1XDwI63JRKNIWBM";
+  "BI5JIRPDW8DxOnOgx8kyM8DoeI5OAXL-LH0cuQvD5KyLXVefNxJUxE3jo84oeA29c2SN3k7dKdkEj8ePrurmnPI";
+const privateVapidKey = "33MQ0piTFIUxucDKLrD4hyeVAhZx6fc4hANtyhrUVh8";
 
 webpush.setVapidDetails(
-  "mailto:test@test.com",
+  "mailto:test@gmail.com",
   publicVapidKey,
   privateVapidKey
 );
@@ -24,12 +24,12 @@ webpush.setVapidDetails(
 app.post("/subscribe", (req, res) => {
   // Get pushSubscription object
   const subscription = req.body;
-
+  // console.log(subscription)
   // Send 201 - resource created
   res.status(201).json({});
 
   // Create payload
-  const payload = JSON.stringify({ title: "Push Test" });
+  const payload = JSON.stringify({ title: subscription });
 
   // Pass object into sendNotification
   webpush
